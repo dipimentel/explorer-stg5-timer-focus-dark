@@ -1,0 +1,321 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 62.5%;
+    color: var(--light-mode-primary-color);
+
+    --light-mode-primary-color: #323238;
+    --light-mode-secondary-color: #FFFFFF;
+    --light-mode-bg-inactive-color: #E1E1E6;
+    --light-mode-bg-inactive-color-hover: #d4d4da;
+    --light-mode-bg-active-color: #02799D;
+    --light-mode-bg-active-color-hover: #026d8e;
+
+    --dark-mode-primary-color: #C4C4CC;
+    --dark-mode-secondary-color: #FFFFFF;
+    --dark-mode-bg-inactive-color: #29292E;
+    --dark-mode-bg-inactive-color-hover: #303036;
+    --dark-mode-bg-active-color: #0A3442;
+    --dark-mode-bg-active-color-hover: #0c3d4e;
+    --dark-mode-bg-page-color: #121214;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+
+    min-height: 100vh;
+    padding: 0 4rem;
+}
+
+#timer-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#timer {
+    font-family: 'Roboto', sans-serif;
+    font-size: clamp(10rem, 9rem + 5vw, 12.6rem);
+    line-height: 14.8rem;
+
+    display: flex;
+    justify-content: center;
+}
+
+#controls {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 .5rem;
+}
+
+#controls button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#controls button:hover path {
+    fill: var(--light-mode-bg-active-color);
+}
+
+#controls .inactive path,
+#controls button:hover.inactive path {
+    fill: var(--light-mode-bg-inactive-color-hover);
+}
+
+#controls button.inactive {
+    cursor: default;
+}
+
+#sounds {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    gap: clamp(1rem, 0.8rem + 3vw, 3.2rem);
+
+    max-width: 30.8rem;
+}
+
+/* Botões Sounds */
+#sounds button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    border: none;
+    border-radius: 2.4rem;
+
+    height: 15.2rem;
+    width: 13.8rem;
+    padding: 2.4rem;
+    background-color: var(--light-mode-bg-inactive-color);
+
+    cursor: pointer;
+}
+
+#sounds .sounds-button-wrapper {
+    position: relative;
+}
+
+#sounds input {
+    -webkit-appearance: none;
+    width: 9rem;
+    height: .4rem;
+    border-radius: 99rem;
+    background-color: var(--light-mode-primary-color);
+
+    position: absolute;
+    bottom: 3rem;
+    left: 2.4rem;
+}
+
+#sounds input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    background: var(--light-mode-primary-color);
+}
+
+#sounds input::-moz-range-thumb {
+    border: none;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    background: var(--light-mode-primary-color);
+}
+
+
+/* Botões Sounds Hover */
+    #sounds button:hover {
+        background-color: var(--light-mode-bg-inactive-color-hover);
+    }
+
+/* Botões Sounds Selecionados */
+    #sounds button.selected {
+        background-color: var(--light-mode-bg-active-color);
+    }
+    #sounds button.selected path {
+        fill: var(--light-mode-secondary-color);
+    }
+
+    #sounds button.selected ~ input {
+        background-color: var(--light-mode-secondary-color);
+    }
+
+    #sounds button.selected ~ input::-webkit-slider-thumb {
+        background-color: var(--light-mode-secondary-color);
+        cursor: pointer;
+    }
+
+    #sounds buttton.selected ~ input::-moz-range-thumb {
+        background-color: var(--light-mode-secondary-color);
+        cursor: pointer;
+    }
+
+/* Botões Sounds Selecionados Hover */
+    #sounds button.selected:hover {
+        background-color: var(--light-mode-bg-active-color-hover);
+    }
+
+
+/* --------- COLOR MODE -------- */
+
+#color-mode {
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+
+    width: 4.4rem;
+    height: 4.4rem;
+
+    display: flex;
+    justify-content: center;
+}
+
+#color-mode button {
+    border: none;
+    background: none;
+
+    cursor: pointer;
+}
+
+#color-mode button:hover path {
+    fill: var(--light-mode-bg-inactive-color-hover)
+}
+
+.dark #color-mode button:hover path {
+    fill: var(--dark-mode-secondary-color)
+}
+
+#color-mode .inactive {
+    display: none;
+}
+
+
+/* DARK MODE */
+.dark {
+    background-color: var(--dark-mode-bg-page-color);
+    color: var(--dark-mode-secondary-color);
+}
+
+/* Controls buttons dark */
+.dark #controls button path {
+    fill: var(--dark-mode-primary-color);
+}
+
+.dark #controls button:hover path {
+    fill: var(--dark-mode-secondary-color);
+}
+
+.dark #controls .inactive path,
+.dark #controls button:hover.inactive path {
+    fill: var(--dark-mode-bg-inactive-color-hover);
+}
+
+.dark #controls button.inactive {
+    cursor: default;
+}
+
+
+/* Sounds buttons dark */
+.dark #sounds button {
+    background-color: var(--dark-mode-bg-inactive-color);
+}
+
+.dark #sounds button:hover {
+    background-color: var(--dark-mode-bg-inactive-color-hover);
+}
+
+.dark #sounds button path {
+    fill: var(--dark-mode-primary-color);
+}
+
+.dark #sounds input {
+    background-color: var(--dark-mode-primary-color);
+}
+
+.dark #sounds input::-webkit-slider-thumb {
+    background: var(--dark-mode-primary-color);
+}
+
+.dark #sounds input::-moz-range-thumb {
+    background: var(--dark-mode-primary-color);
+}
+
+
+/* Sounds buttons dark selected */
+.dark #sounds button.selected {
+    background-color: var(--dark-mode-bg-active-color);
+}
+.dark #sounds button.selected path {
+    fill: var(--dark-mode-secondary-color);
+}
+
+.dark #sounds button.selected ~ input {
+    background-color: var(--dark-mode-secondary-color);
+}
+
+.dark #sounds button.selected ~ input::-webkit-slider-thumb {
+    background-color: var(--dark-mode-secondary-color);
+}
+
+.dark #sounds buttton.selected ~ input::-moz-range-thumb {
+    background-color: var(--dark-mode-secondary-color);
+}
+
+/* Botões Sounds Selecionados Hover */
+.dark #sounds button.selected:hover {
+    background-color: var(--dark-mode-bg-active-color-hover);
+}
+
+
+/* --------- Screen Size -------- */
+
+@media (min-width: 480px) {
+
+    main {
+        gap: 5rem;
+    }
+
+    #timer {
+        font-size: 12.6rem;
+    }
+
+    #sounds {
+        gap: 3.2rem;
+    }
+
+}
+
+@media (min-width: 900px) {
+    main {
+        flex-direction: row;
+        justify-content: space-between;
+
+        max-width: 82rem;
+        margin: 0 auto;
+    }
+
+    #color-mode {
+        top: 6rem;
+        right: 6rem;
+    }
+    
+}
+
+@media (min-width: 1024px) {
+    main {
+        max-width: 90rem;
+    }
+}
